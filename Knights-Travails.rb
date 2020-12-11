@@ -72,6 +72,28 @@ class Knight_travails
     end
 end
 
-prueba = Knight_travails.new([[7, 1], [2, 7]])
-prueba.generate_tree_of_knight_movements
-p prueba.shorter_path
+def knight_travails
+    puts "Imagine a chess board 8x8."
+    puts "Give me a starting postion for the knight. Write two numbers between 1 and 8 and press enter after each number."
+    puts "The first number will be the column and the second the row."
+    start_1 = get_number
+    start_2 = get_number
+    puts "Now give me the final position the same way that the starting position. I will calculate the shorter path for the knight."
+    end_1 = get_number
+    end_2 = get_number
+    short_path = Knight_travails.new([[start_1, start_2], [end_1, end_2]])
+    short_path.generate_tree_of_knight_movements
+    puts "This is the shorter path:"
+    short_path.shorter_path.each { |position| p position}
+end
+
+def get_number
+    number = gets.chomp.to_i
+    if number < 1 || number > 8
+        puts "Please enter a number between 1 and 8"
+        number = get_number
+    end
+    return number
+end
+
+knight_travails
